@@ -68,7 +68,7 @@ class TemperatureTest {
 
             //testing
             assertAll("Initial temperature values",
-                () -> { assertEquals(expectedCelsius, temp1.getValue(), 0.001, "Initial value should be " + expectedCelsius); },
+                () -> { assertEquals(expectedValues[i], temp1.getValue(), 0.001, "Initial value should be " + expectedValues[i]); },
                 () -> { assertEquals(unit, temp1.getUnit(), "Initial unit should be " + unit); }
             );
             //convert to Celsius
