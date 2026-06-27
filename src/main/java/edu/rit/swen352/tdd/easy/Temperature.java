@@ -28,4 +28,30 @@ public class Temperature {
   public enum TemperatureUnit {
     CELSIUS, FAHRENHEIT, KELVIN
   }
+
+  double value;
+  TemperatureUnit unit;
+
+  public Temperature(double value, TemperatureUnit unit) {
+    this.value = value;
+    this.unit = unit;
+  }
+
+  public Temperature(double value) {
+    this(value, TemperatureUnit.CELSIUS);
+  }
+
+  public double getValue() {
+    return value;
+  }
+
+  public TemperatureUnit getUnit() {
+    return unit;
+  }
+
+  public Temperature convertTo(TemperatureUnit newUnit) {
+    return new Temperature(this.value, newUnit);
+  }
+
 }
+
