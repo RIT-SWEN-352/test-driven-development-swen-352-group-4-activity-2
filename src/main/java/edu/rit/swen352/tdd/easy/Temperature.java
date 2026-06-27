@@ -82,5 +82,21 @@ public class Temperature {
     return new Temperature(newValue, newUnit);
   }
 
+
+  public String toString() {
+    String stringRep = String.format("%.2f", value);
+    switch (unit) {
+      case CELSIUS:
+        stringRep += "°C";
+        break;
+      case FAHRENHEIT:
+        stringRep += "°F";
+        break;
+      case KELVIN:
+        stringRep += "K";
+        break;
+    }
+    return stringRep;
+  }
 }
 
