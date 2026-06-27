@@ -85,6 +85,8 @@ public class Temperature {
 
   public String toString() {
     String stringRep = String.format("%.2f", value);
+    if (stringRep.endsWith("0"))
+      stringRep = stringRep.substring(0, stringRep.length() - 1);
     switch (unit) {
       case CELSIUS:
         stringRep += "°C";
