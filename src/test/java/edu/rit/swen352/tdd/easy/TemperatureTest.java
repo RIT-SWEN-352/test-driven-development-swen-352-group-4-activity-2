@@ -59,21 +59,22 @@ class TemperatureTest {
         "1000, 1832.0, 1273.15"
     })
     @DisplayName("Test convertTo() method with different starting temperatures.")
-    public void testConvertTo(double value, double expectedFahrenheit, double expectedKelvin) {
+    public void testConvertTo(double expectedCelsius, double expectedFahrenheit, double expectedKelvin) {
         //setup
-        for (Temperature.TemperatureUnit unit : Temperature.TemperatureUnit.values()) {
-            
-            Temperature temp1 = new Temperature(value, unit);
+        for (int i = 0; i < Temperature.TemperatureUnit.values().length; i++) {
+            Temperature.TemperatureUnit unit = Temperature.TemperatureUnit.values()[i];
+            double[] expectedValues = {expectedCelsius, expectedFahrenheit, expectedKelvin};
+            Temperature temp1 = new Temperature(expectedValues[i], unit);
 
             //testing
             assertAll("Initial temperature values",
-                () -> { assertEquals(value, temp1.getValue(), 0.001, "Initial value should be " + value); },
+                () -> { assertEquals(expectedCelsius, temp1.getValue(), 0.001, "Initial value should be " + expectedCelsius); },
                 () -> { assertEquals(unit, temp1.getUnit(), "Initial unit should be " + unit); }
             );
             //convert to Celsius
             Temperature tempCelsius = temp1.convertTo(Temperature.TemperatureUnit.CELSIUS);
             assertAll("Converted temperature values",
-                () -> { assertEquals(value, tempCelsius.getValue(), 0.001, "Converted value should be " + value); },
+                () -> { assertEquals(expectedCelsius, tempCelsius.getValue(), 0.001, "Converted value should be " + expectedCelsius); },
                 () -> { assertEquals(Temperature.TemperatureUnit.CELSIUS, tempCelsius.getUnit(), "Converted unit should be Celsius"); }
             );  
 
