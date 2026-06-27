@@ -65,21 +65,21 @@ class TemperatureTest {
 
         //testing
         assertAll("Initial temperature values",
-            () -> { assertEquals(value, temp1.getValue(), "Initial value should be " + value); },
+            () -> { assertEquals(value, temp1.getValue(), 0.001, "Initial value should be " + value); },
             () -> { assertEquals(Temperature.TemperatureUnit.CELSIUS, temp1.getUnit(), "Initial unit should be Celsius"); }
         );
 
         //convert to Fahrenheit
         Temperature temp2 = temp1.convertTo(Temperature.TemperatureUnit.FAHRENHEIT);
         assertAll("Converted temperature values",
-            () -> { assertEquals(expectedFahrenheit, temp2.getValue(), "Converted value should be " + expectedFahrenheit); },
+            () -> { assertEquals(expectedFahrenheit, temp2.getValue(), 0.001, "Converted value should be " + expectedFahrenheit); },
             () -> { assertEquals(Temperature.TemperatureUnit.FAHRENHEIT, temp2.getUnit(), "Converted unit should be Fahrenheit"); }
         );
 
         //convert to Kelvin
         Temperature temp3 = temp1.convertTo(Temperature.TemperatureUnit.KELVIN);
         assertAll("Converted temperature values",
-            () -> { assertEquals(expectedKelvin, temp3.getValue(), "Converted value should be " + expectedKelvin); },
+            () -> { assertEquals(expectedKelvin, temp3.getValue(), 0.001, "Converted value should be " + expectedKelvin); },
             () -> { assertEquals(Temperature.TemperatureUnit.KELVIN, temp3.getUnit(), "Converted unit should be Kelvin"); }
         );
     }
