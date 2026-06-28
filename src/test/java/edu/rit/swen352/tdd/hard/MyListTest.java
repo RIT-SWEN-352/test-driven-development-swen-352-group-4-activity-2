@@ -68,4 +68,18 @@ class MyListTest {
         assertThrows(NoSuchElementException.class, () -> list.get(2), "get should throw a NoSuchElementException when index is out of bounds" );
     }
 
+    @Test
+    @DisplayName("Test that remove correctly removes elements")
+    void testRemoveElement() {
+        MyList<Integer> list = new MyList<>(10);
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        assertTrue(list.remove(2), "remove should return True after succesfully removing an element");
+        assertAll(
+            () -> assertEquals(3, list.get(2), "After removing the element at index 2 the remainings elements (3) move to fill the gap"),
+            () -> assertEquals(2, list.size(), "after removing an element, the size should be reduced by 1");
+        );
+    }
+
 }
