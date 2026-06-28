@@ -18,4 +18,13 @@ class MyListTest {
         assertTrue(list.size() == 0, "List size should be 0");
     }
 
+    @Test
+    @DisplayName("Test that MyList is not empty after adding an element")
+    void testAddElement() {
+        MyList<String> list = new MyList<>(10);
+        list.add("Hello");
+        assertFalse(list.isEmpty(), "List should not be empty after adding an element");
+        assertEquals(1, list.size(), "List size should be 1 after adding an element");
+    }
+
 }
