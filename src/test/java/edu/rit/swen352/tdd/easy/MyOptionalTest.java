@@ -35,4 +35,11 @@ class MyOptionalTest {
         MyOptional<String> optional = MyOptional.ofNullable(null);
         assertFalse(optional.isPresent(), "Optional should be empty when created with ofNullable(null)");
     }
+
+    @Test
+    @DisplayName("Test that MyOptional is present when created with ofNullable(non-null)")
+    void testOfNullableWithNonNull() {
+        MyOptional<String> optional = MyOptional.ofNullable("Hello");
+        assertTrue(optional.isPresent(), "Optional should be present when created with ofNullable(non-null)");
+    }
 }
