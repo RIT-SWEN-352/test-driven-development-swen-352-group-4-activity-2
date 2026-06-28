@@ -118,9 +118,11 @@ class MySetTest {
         set.add(1);
         set.add(2);
         //testing
-        assertTrue(set.contains(1), "Set should contain 1");
-        assertTrue(set.contains(2), "Set should contain 2");
-        assertFalse(set.contains(3), "Set should not contain 3");
+        assertAll(
+            () -> assertTrue(set.contains(1), "Set should contain 1"),
+            () -> assertTrue(set.contains(2), "Set should contain 2"),
+            () -> assertFalse(set.contains(3), "Set should not contain 3")
+        );
     }
 
     @Test
@@ -162,9 +164,11 @@ class MySetTest {
         set.add(2);
         //testing
         MySet<String> mappedSet = set.map(Object::toString);
-        assertEquals(2, mappedSet.size(), "Mapped set should have size 2");
-        assertTrue(mappedSet.contains("1"), "Mapped set should contain '1'");
-        assertTrue(mappedSet.contains("2"), "Mapped set should contain '2'");
+        assertAll(
+            () -> assertEquals(2, mappedSet.size(), "Mapped set should have size 2"),
+            () -> assertTrue(mappedSet.contains("1"), "Mapped set should contain '1'"),
+            () -> assertTrue(mappedSet.contains("2"), "Mapped set should contain '2'")
+        );
     }
 
     @Test
@@ -185,10 +189,11 @@ class MySetTest {
 
         // Map to even/odd strings
         MySet<String> mappedSet = set.map(i -> (i % 2 == 0) ? "even" : "odd");
-
-        assertEquals(2, mappedSet.size(), "Mapped set should have size 2 due to overlapping elements");
-        assertTrue(mappedSet.contains("even"), "Mapped set should contain 'even'");
-        assertTrue(mappedSet.contains("odd"), "Mapped set should contain 'odd'");
+        assertAll(
+            () -> assertEquals(2, mappedSet.size(), "Mapped set should have size 2 due to overlapping elements"),
+            () -> assertTrue(mappedSet.contains("even"), "Mapped set should contain 'even'"),
+            () -> assertTrue(mappedSet.contains("odd"), "Mapped set should contain 'odd'")
+        );
     }
 
     @Test
@@ -201,9 +206,19 @@ class MySetTest {
         assertThrows(IllegalArgumentException.class, () -> set.map(null), "Mapping with a null function should throw IllegalArgumentException");
     }
 
-    
-
-
-
+    @Test
+    @DisplayName("Test dynamic resizing of the set when adding elements beyond initial capacity")
+    public void testDynamicResizing() {
+        MySet<Integer> set = new MySet<>(2);
+        set.add(1);
+        set.add(2);
+        assertTrue(set.add(3), "Adding an element beyond initial capacity should succeed");
+        assertTrue(set.add(4), "Adding an element beyond initial capacity should succeed");
+        assertAll(
+            () -> assertTrue(set.contains(3), "Set should have size 3 after dynamic resizing"),
+            () -> assertTrue(set.contains(4), "Set should have size 3 after dynamic resizing"),
+            () -> assertEquals(4, set.size(), "Set should have size 3 after dynamic resizing")
+        );
+    }
 
 }
