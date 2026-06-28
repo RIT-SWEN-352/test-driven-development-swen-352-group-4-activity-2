@@ -38,6 +38,14 @@ class MySetTest {
     }
 
     @Test
+    @DisplayName("Test adding an element returns true when the element is not already in the set and false otherwise")
+    public void testAddReturnsSuccessForNewElement() {
+        MySet<Integer> set = new MySet<>(10);
+        assertTrue(set.add(1), "Adding a new element should return true");
+        assertFalse(set.add(1), "Adding a duplicate element should return false");
+    }
+
+    @Test
     @DisplayName("Test adding an element increases size")
     public void testAddIncreasesSize() {
         MySet<Integer> set = new MySet<>(10);
@@ -61,7 +69,7 @@ class MySetTest {
         set.add(2);
         //testing
         assertEquals(2, set.size(), "Adding an element should increase size to 2");
-        set.add(1);
+        assertFalse(set.add(1), "Adding a duplicate element should not increase size");
         assertEquals(2, set.size(), "Adding a duplicate element should not increase size");
     }
 
