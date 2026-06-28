@@ -49,4 +49,11 @@ class MyOptionalTest {
         MyOptional<String> optional = MyOptional.of("Hello");
         assertEquals("Hello", optional.get(), "get() should return the correct value when present");
     }
+
+    @Test
+    @DisplayName("Test that get() throws NoSuchElementException when empty")
+    void testGetValueWhenEmpty() {
+        MyOptional<String> optional = MyOptional.empty();
+        assertThrows(java.util.NoSuchElementException.class, () -> optional.get(), "get() should throw NoSuchElementException when empty");
+    }
 }
