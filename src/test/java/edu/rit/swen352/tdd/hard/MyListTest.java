@@ -27,4 +27,12 @@ class MyListTest {
         assertEquals(1, list.size(), "List size should be 1 after adding an element");
     }
 
+    @Test
+    @DisplayName("Test that Mylist does not allow null elements")
+    void testAddNullElement() {
+        MyList<String> list = new MyList<>(10);
+        assertFalse(list.add(null), "Adding null element should fail");
+        assertTrue(list.isEmpty(), "List should still be empty after trying to add null");
+    }
+
 }
