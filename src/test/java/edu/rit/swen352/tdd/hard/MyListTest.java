@@ -46,4 +46,14 @@ class MyListTest {
         assertEquals(4, list.size(), "List size should be 4 after adding four elements");
     }
 
+    @Test
+    @DisplayName("Test that MyList gets elements correctly")
+    void testGetElement() {
+        MyList<String> list = new MyList<>(10);
+        list.add("Hello");
+        list.add("World");
+        assertEquals("Hello", list.get(0), "First element should be 'Hello'");
+        assertEquals("World", list.get(1), "Second element should be 'World'");
+    }
+
 }
