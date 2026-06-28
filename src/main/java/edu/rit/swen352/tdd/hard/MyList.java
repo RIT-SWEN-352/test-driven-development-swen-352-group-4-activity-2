@@ -65,4 +65,14 @@ public class MyList<T> {
         }
         return (T) elements[index];
     }
+
+    public T remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new java.util.NoSuchElementException("Index out of bounds");
+        }
+        T indexValue = (T) elements[index];
+        System.arraycopy(elements, index + 1, elements, index, size - index - 1);
+        elements[--size] = null;
+        return indexValue;
+    }
 }
