@@ -56,4 +56,13 @@ class MyOptionalTest {
         MyOptional<String> optional = MyOptional.empty();
         assertThrows(java.util.NoSuchElementException.class, () -> optional.get(), "get() should throw NoSuchElementException when empty");
     }
+
+    @Test
+    @DisplayName("Test that ifPresent() executes the consumer when value is present")
+    void testIfPresentWithValue() {
+        MyOptional<String> optional = MyOptional.of("Hello");
+        StringBuilder result = new StringBuilder();
+        optional.ifPresent(value -> result.append(value));
+        assertEquals("Hello", result.toString(), "ifPresent() should execute the consumer when value is present");
+    }
 }
