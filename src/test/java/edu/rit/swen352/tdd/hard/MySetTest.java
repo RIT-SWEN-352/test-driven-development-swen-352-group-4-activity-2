@@ -111,6 +111,23 @@ class MySetTest {
     }
 
     @Test
+    @DisplayName("Test removing twice does not change size after first removal")
+    public void testRemoveTwiceDoesNotChangeSize() {
+        //setup
+        MySet<Integer> set = new MySet<>(10);
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        //testing
+        assertEquals(3, set.size(), "Adding an element should increase size to 3");
+        assertTrue(set.remove(2), "Removing an element should return true");
+        assertEquals(2, set.size(), "Removing an element should decrease size to 2");
+        assertFalse(set.remove(2), "Removing the same element again should return false");
+        assertEquals(2, set.size(), "Removing the same element again should not change size");
+    }
+
+    
+    @Test
     @DisplayName("Test contains method")
     public void testContains() {
         //setup
