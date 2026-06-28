@@ -40,5 +40,22 @@ public class MyList<T> {
     public int size() {
         return size;
     }
-    
+
+    public boolean add(T element) {
+        if (element == null) {
+            return false;
+        }
+        if (size == elements.length) {
+            resize();
+        }
+        elements[size++] = element;
+        return true;
+    }
+
+    private void resize() {
+        int newCapacity = elements.length * 2;
+        Object[] newElements = new Object[newCapacity];
+        System.arraycopy(elements, 0, newElements, 0, size);
+        elements = newElements;
+    }
 }
