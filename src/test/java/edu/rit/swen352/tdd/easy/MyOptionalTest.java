@@ -23,4 +23,9 @@ class MyOptionalTest {
         assertTrue(optional.isPresent(), "Optional should be present");
     }
 
+    @Test
+    @DisplayName("Test that of throws IllegalArgumentException when created with null value")
+    void testNullValue() {
+        assertThrows(IllegalArgumentException.class, () -> MyOptional.of(null));
+    }
 }
