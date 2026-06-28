@@ -45,6 +45,13 @@ public class MyOptional<T> {
     public static <T> MyOptional<T> empty() {
         return new MyOptional<>(null);
     }
+
+    public static <T> MyOptional<T> of(T value) {
+        if (value == null) {
+            throw new IllegalArgumentException("Value cannot be null");
+        }
+        return new MyOptional<>(value);
+    }
     
     public boolean isPresent() {
         return value != null;
