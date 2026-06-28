@@ -15,6 +15,7 @@ class MyListTest {
     void testEmptyList() {
         MyList<String> list = new MyList<>(10);
         assertTrue(list.isEmpty(), "List should be empty");
+        assertTrue(list.size() == 0, "List size should be 0");
     }
 
 }
