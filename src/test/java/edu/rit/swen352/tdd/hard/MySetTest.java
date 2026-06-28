@@ -124,6 +124,21 @@ class MySetTest {
     }
 
     @Test
+    @DisplayName("Test contains after removing an element")
+    public void testContainsAfterRemove() {
+        //setup
+        MySet<Integer> set = new MySet<>(10);
+        set.add(1);
+        set.add(2);
+        //testing
+        assertTrue(set.contains(1), "Set should contain 1");
+        assertTrue(set.contains(2), "Set should contain 2");
+        assertTrue(set.remove(1), "Removing an element should return true");
+        assertFalse(set.contains(1), "Set should not contain 1 after removal");
+        assertTrue(set.contains(2), "Set should still contain 2 after removal of 1");
+    }
+
+    @Test
     @DisplayName("Test contains method with null element throws exception")
     public void testContainsNullThrowsException() {
         MySet<Integer> set = new MySet<>(10);
