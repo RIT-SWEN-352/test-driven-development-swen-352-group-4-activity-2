@@ -35,4 +35,15 @@ class MyListTest {
         assertTrue(list.isEmpty(), "List should still be empty after trying to add null");
     }
 
+    @Test
+    @DisplayName("Test that MyList resizes when capacity is exceeded")
+    void testResize() {
+        MyList<Integer> list = new MyList<>(2);
+        assertTrue(list.add(1), "Adding element should succeed");
+        assertTrue(list.add(2), "Adding element should succeed");
+        assertTrue(list.add(3), "Adding element should succeed, triggering resize");
+        assertTrue(list.add(4), "Adding element should succeed");
+        assertEquals(4, list.size(), "List size should be 4 after adding four elements");
+    }
+
 }
