@@ -82,4 +82,13 @@ class MyListTest {
         );
     }
 
+    @Test
+    @DisplayName("Test that remove throw exception for out-of-bounds index")
+    void testRemoveOutOfBoundsThrowsException() {
+        MyList<String> list = new MyList<>(10);
+        list.add("1");
+        assertThrows(NoSuchElementException.class, () -> list.remove(4), "get should throw a NoSuchElementException when index is out of bounds" );
+    
+    }
+
 }
