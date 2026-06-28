@@ -12,6 +12,18 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class MySetTest {
     @Test
+    @DisplayName("Test new set with 0 starting capacity throws exception")
+    public void testSetWithZeroCapacityThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> new MySet<>(0), "New set with 0 starting capacity should throw IllegalArgumentException");
+    }
+
+    @Test
+    @DisplayName("Test new set with negative starting capacity throws exception")
+    public void testSetWithNegativeCapacityThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> new MySet<>(-1), "New set with negative starting capacity should throw IllegalArgumentException");
+    }
+
+    @Test
     @DisplayName("Test new set isEmpty")
     public void testNewSetIsEmpty() {
         MySet<Integer> set = new MySet<>(10);
@@ -72,7 +84,7 @@ class MySetTest {
         set.add(3);
         //testing
         assertEquals(3, set.size(), "Adding an element should increase size to 3");
-        set.remove(2);
+        assertTrue(set.remove(2), "Removing an element should return true");
         assertEquals(2, set.size(), "Removing an element should decrease size to 2");
     }
 
@@ -86,7 +98,7 @@ class MySetTest {
         set.add(3);
         //testing
         assertEquals(3, set.size(), "Adding an element should increase size to 3");
-        set.remove(4);
+        assertFalse(set.remove(4), "Removing a non-existent element should return false");
         assertEquals(3, set.size(), "Removing a non-existent element should not change size");
     }
 
