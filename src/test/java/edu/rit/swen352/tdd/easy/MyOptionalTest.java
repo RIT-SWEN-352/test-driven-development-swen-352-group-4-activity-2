@@ -15,5 +15,12 @@ class MyOptionalTest {
         MyOptional<String> optional = MyOptional.empty();
         assertFalse(optional.isPresent(), "Optional should be empty");
     }
-    
+
+    @Test
+    @DisplayName("Test that MyOptional is present when created with of()")
+    void testNonEmptyOptional() {
+        MyOptional<String> optional = MyOptional.of("Hello");
+        assertTrue(optional.isPresent(), "Optional should be present");
+    }
+
 }
