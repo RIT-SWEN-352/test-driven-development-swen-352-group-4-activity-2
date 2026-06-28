@@ -215,9 +215,9 @@ class MySetTest {
         assertTrue(set.add(3), "Adding an element beyond initial capacity should succeed");
         assertTrue(set.add(4), "Adding an element beyond initial capacity should succeed");
         assertAll(
-            () -> assertTrue(set.contains(3), "Set should have size 3 after dynamic resizing"),
-            () -> assertTrue(set.contains(4), "Set should have size 3 after dynamic resizing"),
-            () -> assertEquals(4, set.size(), "Set should have size 3 after dynamic resizing")
+            () -> assertTrue(set.contains(3), "Set should have 3 after dynamic resizing"),
+            () -> assertTrue(set.contains(4), "Set should have 4 after dynamic resizing"),
+            () -> assertEquals(4, set.size(), "Set should have size 4 after dynamic resizing")
         );
     }
 
