@@ -28,4 +28,11 @@ class MyOptionalTest {
     void testNullValue() {
         assertThrows(IllegalArgumentException.class, () -> MyOptional.of(null));
     }
+
+    @Test
+    @DisplayName("Test that MyOptional is empty when created with ofNullable(null)")
+    void testOfNullableWithNull() {
+        MyOptional<String> optional = MyOptional.ofNullable(null);
+        assertFalse(optional.isPresent(), "Optional should be empty when created with ofNullable(null)");
+    }
 }
