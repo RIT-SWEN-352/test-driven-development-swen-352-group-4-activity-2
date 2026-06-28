@@ -76,4 +76,20 @@ public class MySet<T> {
         }
         return false;
     }
+
+    public boolean remove(T element) {
+        if (element == null) {
+            throw new IllegalArgumentException("Element cannot be null");
+        }
+
+        for (int i = 0; i < size; i++) {
+            if (elements[i].equals(element)) {
+                // Shift elements to the left to fill the gap
+                System.arraycopy(elements, i + 1, elements, i, size - i - 1);
+                elements[--size] = null; // Clear the last element
+                return true;
+            }
+        }
+        return false;
+    }
 }
