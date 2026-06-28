@@ -1,6 +1,7 @@
 package edu.rit.swen352.tdd.hard;
 
 import java.beans.Transient;
+import java.util.function.Consumer;
 
 /**
  * MyList is a flexible-sized sequence of elements with no gaps.
@@ -86,5 +87,13 @@ public class MyList<T> {
             }
         }
         return false;
+    }
+
+    public void forEach(Consumer<T> c) {
+        if (c == null)
+            throw new IllegalArgumentException("Consumer can not be null");
+        for (int i = 0; i < size; i++) {
+            c.accept((T) elements[i]);
+        }
     }
 }
