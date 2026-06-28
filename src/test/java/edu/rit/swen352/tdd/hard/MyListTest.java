@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Test suite for the {@link MyList} component.
  */
 class MyListTest {
+
     @Test
     @DisplayName("Test that MyList is empty when created")
     void testEmptyList() {

@@ -1,5 +1,7 @@
 package edu.rit.swen352.tdd.hard;
 
+import java.beans.Transient;
+
 /**
  * MyList is a flexible-sized sequence of elements with no gaps.
  * All elements must be non-{@code null}.
@@ -20,4 +22,18 @@ package edu.rit.swen352.tdd.hard;
  * @param <T> the type of elements in the list.
  */
 public class MyList<T> {
+    private Object[] elements;
+    private int size;
+
+    public MyList(int initialCapacity) {
+        if (initialCapacity <= 0) {
+            throw new IllegalArgumentException("Initial capacity cannot be non-positive");
+        }
+        this.elements = new Object[initialCapacity];
+        this.size = 0;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
 }
