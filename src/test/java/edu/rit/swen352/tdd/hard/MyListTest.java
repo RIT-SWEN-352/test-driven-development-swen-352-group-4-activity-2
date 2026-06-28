@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.NoSuchElementException;
+
 /**
  * Test suite for the {@link MyList} component.
  */
@@ -52,8 +54,18 @@ class MyListTest {
         MyList<String> list = new MyList<>(10);
         list.add("Hello");
         list.add("World");
-        assertEquals("Hello", list.get(0), "First element should be 'Hello'");
-        assertEquals("World", list.get(1), "Second element should be 'World'");
+        assertAll(
+            () -> assertEquals("Hello", list.get(0), "First element should be 'Hello'"),
+            () -> assertEquals("World", list.get(1), "Second element should be 'World'")
+        );
+    }
+
+    @Test
+    @DisplayName("Test that get throws exception for out-of-bounds index")
+    void testGetOutOfBoundsThrowsException() {
+        MyList<String> list = new MyList<>(10);
+        list.add("1");
+        assertThrows(NoSuchElementException.class, () -> list.get(2), "get should throw a NoSuchElementException when index is out of bounds" );
     }
 
 }
