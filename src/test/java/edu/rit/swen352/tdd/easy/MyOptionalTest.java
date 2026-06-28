@@ -65,4 +65,13 @@ class MyOptionalTest {
         optional.ifPresent(value -> result.append(value));
         assertEquals("Hello", result.toString(), "ifPresent() should execute the consumer when value is present");
     }
+
+    @Test
+    @DisplayName("Test that ifPresent() does not execute the consumer when value is not present")
+    void testIfPresentWithoutValue() {
+        MyOptional<String> optional = MyOptional.empty();
+        StringBuilder result = new StringBuilder();
+        optional.ifPresent(value -> result.append(value).append("I should not be executed"));
+        assertEquals("", result.toString(), "ifPresent() should not execute the consumer when value is not present");
+    }
 }
