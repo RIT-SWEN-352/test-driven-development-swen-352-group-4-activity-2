@@ -52,8 +52,14 @@ public class MyOptional<T> {
         }
         return new MyOptional<>(value);
     }
+
+    public static <T> MyOptional<T> ofNullable(T value) {
+        return new MyOptional<>(value);
+    }
     
     public boolean isPresent() {
         return value != null;
     }
+
+    
 }
