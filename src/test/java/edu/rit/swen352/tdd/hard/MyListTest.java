@@ -75,7 +75,7 @@ class MyListTest {
         list.add(1);
         list.add(2);
         list.add(3);
-        assertTrue(list.remove(2), "remove should return True after succesfully removing an element");
+        assertEquals(2, list.remove(2), "remove should return the removed element (2)");
         assertAll(
             () -> assertEquals(3, list.get(2), "After removing the element at index 2 the remainings elements (3) move to fill the gap"),
             () -> assertEquals(2, list.size(), "after removing an element, the size should be reduced by 1");
