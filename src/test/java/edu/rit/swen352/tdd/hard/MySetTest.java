@@ -189,8 +189,7 @@ class MySetTest {
             assertEquals(2, set.size(), "Removing the same element again should not change size");
         }
     }
-
-/* 
+ 
     @Nested
     @DisplayName("Map Method Tests")
     static class MapMethodTests {
@@ -261,5 +260,5 @@ class MySetTest {
             () -> assertEquals(4, set.size(), "Set should have size 4 after dynamic resizing")
         );
     }
-*/
+
 }

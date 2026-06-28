@@ -92,4 +92,20 @@ public class MySet<T> {
         }
         return false;
     }
+
+    public <F> MySet<F> map(java.util.function.Function<T, F> function) {
+        if (function == null) {
+            throw new IllegalArgumentException("Function cannot be null");
+        }
+
+        MySet<F> newSet = new MySet<>(elements.length);
+        for (int i = 0; i < size; i++) {
+            F newElement = function.apply((T) elements[i]);
+            if (newElement == null) {
+                throw new IllegalArgumentException("Mapped element cannot be null");
+            }
+            newSet.add(newElement);
+        }
+        return newSet;
+    }
 }
