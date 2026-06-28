@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 /**
  * Test suite for the {@link MyList} component.
@@ -112,7 +113,7 @@ class MyListTest {
     @Test
     @DisplayName("Test that remove first returns false when element does not exist in the list")
     void testRemoveNonExistingElement() {
-         MyList<String> list = new MyList<>(10);
+        MyList<String> list = new MyList<>(10);
         list.add("1");
         list.add("3");
         list.add("4");
@@ -121,7 +122,21 @@ class MyListTest {
             () -> assertEquals("4", list.get(2), "The elements shouldnt move because nothing was removed"),
             () -> assertEquals(3, list.size(), "no element should be removed so size should not change.")
         );
+    }
+
+    @Test
+    @DisplayName("Test that forEach works")
+    void testForEach() { 
+        MyList<Integer> list = new MyList<>(10);
+        list.add(2);
+        list.add(1);
+        list.add(2);
+        list.add(2);
         
+        int[] sum = {0};
+        Consumer<Integer> addToSum = x -> sum[0] += x;
+        list.forEach(addToSum);
+        assertEquals(7, sum[0], "The total of sum should be 7 after adding 2 + 1 + 2 + 2");
     }
 
 }
