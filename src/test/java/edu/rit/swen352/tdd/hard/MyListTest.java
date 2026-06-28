@@ -101,7 +101,7 @@ class MyListTest {
         list.add("2");
         list.add("4");
 
-        assertTrue(list.removeFirst("2"));
+        assertTrue(list.removeFirst("2"), "removeFirst should return true when it succeeds");
         assertAll(
             () -> assertEquals("3", list.get(1), "After removing the first instance of the element the remainings elements move to fill the gap"),
             () -> assertEquals(4, list.size(), "after removing an element, the size should be reduced by 1"),
