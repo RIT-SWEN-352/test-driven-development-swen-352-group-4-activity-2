@@ -109,4 +109,19 @@ class MyListTest {
         );
     }
 
+    @Test
+    @DisplayName("Test that remove first returns false when element does not exist in the list")
+    void testRemoveNonExistingElement() {
+         MyList<String> list = new MyList<>(10);
+        list.add("1");
+        list.add("3");
+        list.add("4");
+        assertFalse(list.removeFirst("2"), "removeFirst should return false when the element isnt present");
+        assertAll(
+            () -> assertEquals("4", list.get(2), "The elements shouldnt move because nothing was removed"),
+            () -> assertEquals(3, list.size(), "no element should be removed so size should not change.")
+        );
+        
+    }
+
 }
