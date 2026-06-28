@@ -139,4 +139,15 @@ class MyListTest {
         assertEquals(7, sum[0], "The total of sum should be 7 after adding 2 + 1 + 2 + 2");
     }
 
+    @Test
+    @DisplayName("Test ForEach throws exception for null consumer")
+    void testForEachThrowsIfNullConsumer() {
+        MyList<Integer> list = new MyList<>(10);
+        list.add(2);
+        list.add(1);
+
+        Consumer<Integer> nullConsumer = null;
+        assertThrows(IllegalArgumentException.class, () -> list.forEach(nullConsumer), "forEach should throw an exception for a null consumer");
+    }
+
 }
