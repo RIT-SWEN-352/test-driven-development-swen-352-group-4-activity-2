@@ -22,7 +22,7 @@ class MyListTest {
     @DisplayName("Test that MyList is not empty after adding an element")
     void testAddElement() {
         MyList<String> list = new MyList<>(10);
-        list.add("Hello");
+        assertTrue(list.add("Hello"), "Adding element should succeed");
         assertFalse(list.isEmpty(), "List should not be empty after adding an element");
         assertEquals(1, list.size(), "List size should be 1 after adding an element");
     }
