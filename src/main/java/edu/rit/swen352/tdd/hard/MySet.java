@@ -24,5 +24,23 @@ package edu.rit.swen352.tdd.hard;
  * @param <T> the type of elements in the set.
  */
 public class MySet<T> {
-    
+    private Object[] elements;
+    private int size;
+
+    public MySet(int initialCapacity) {
+        if (initialCapacity <= 0) {
+            throw new IllegalArgumentException("Initial capacity must be greater than 0");
+        }
+
+        this.elements = new Object[initialCapacity];
+        this.size = 0;
+    }
+
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
+    public int size() {
+        return this.size;
+    }
 }
