@@ -68,5 +68,10 @@ public class MyOptional<T> {
         return value;
     }
 
+    public void ifPresent(java.util.function.Consumer<? super T> consumer) {
+        if (isPresent()) {
+            consumer.accept(value);
+        }
+    }
     
 }
