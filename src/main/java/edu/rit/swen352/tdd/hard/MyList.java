@@ -58,4 +58,11 @@ public class MyList<T> {
         System.arraycopy(elements, 0, newElements, 0, size);
         elements = newElements;
     }
+
+    public T get(int index) {
+        if (index < 0 || index >= size) {
+            throw new java.util.NoSuchElementException("Index out of bounds");
+        }
+        return (T) elements[index];
+    }
 }
