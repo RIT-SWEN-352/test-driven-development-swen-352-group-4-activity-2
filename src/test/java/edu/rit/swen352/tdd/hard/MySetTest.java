@@ -123,6 +123,11 @@ class MySetTest {
         set.add(2);
 
         assertThrows(IllegalArgumentException.class, () -> set.contains(null), "Contains with a null element should throw IllegalArgumentException");
+        assertAll(
+                () -> assertEquals(2, set.size(), "Size should remain unchanged after contains with null"),
+                () -> assertTrue(set.contains(1), "Set should still contain 1 after contains with null"),
+                () -> assertTrue(set.contains(2), "Set should still contain 2 after contains with null")
+        );
     }
 
     @Test
