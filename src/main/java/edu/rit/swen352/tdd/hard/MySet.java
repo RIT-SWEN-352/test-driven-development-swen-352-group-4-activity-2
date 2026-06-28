@@ -43,4 +43,37 @@ public class MySet<T> {
     public int size() {
         return this.size;
     }
+    
+    public boolean add(T element) {
+        if (element == null) {
+            throw new IllegalArgumentException("Element cannot be null");
+        }
+
+        if (contains(element)) {
+            return false;
+        }
+
+        if (size == elements.length) {
+            // Resize the array if necessary
+            Object[] newElements = new Object[elements.length * 2];
+            System.arraycopy(elements, 0, newElements, 0, size);
+            elements = newElements;
+        }
+
+        elements[size++] = element;
+        return true;
+    }
+
+    public boolean contains(T element) {
+        if (element == null) {
+            throw new IllegalArgumentException("Element cannot be null");
+        }
+
+        for (int i = 0; i < size; i++) {
+            if (elements[i].equals(element)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

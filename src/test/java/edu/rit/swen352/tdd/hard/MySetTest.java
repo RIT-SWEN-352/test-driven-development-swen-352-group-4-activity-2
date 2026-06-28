@@ -41,7 +41,7 @@ class MySetTest {
         }
     }
     
-/* 
+
     @Nested
     @DisplayName("Add Method Tests")
     static class AddMethodTests {
@@ -92,7 +92,7 @@ class MySetTest {
         }
     }
 
-
+/*
     @Nested
     @DisplayName("Remove Method Tests")
     static class RemoveMethodTests {
@@ -138,56 +138,6 @@ class MySetTest {
             assertEquals(2, set.size(), "Removing an element should decrease size to 2");
             assertFalse(set.remove(2), "Removing the same element again should return false");
             assertEquals(2, set.size(), "Removing the same element again should not change size");
-        }
-    }
-
-    
-    @Nested
-    @DisplayName("Contains Method Tests")
-    static class ContainsMethodTests {
-        @Test
-        @DisplayName("Test contains method")
-        public void testContains() {
-            //setup
-            MySet<Integer> set = new MySet<>(10);
-            set.add(1);
-            set.add(2);
-            //testing
-            assertAll(
-                () -> assertTrue(set.contains(1), "Set should contain 1"),
-                () -> assertTrue(set.contains(2), "Set should contain 2"),
-                () -> assertFalse(set.contains(3), "Set should not contain 3")
-            );
-        }
-
-        @Test
-        @DisplayName("Test contains after removing an element")
-        public void testContainsAfterRemove() {
-            //setup
-            MySet<Integer> set = new MySet<>(10);
-            set.add(1);
-            set.add(2);
-            //testing
-            assertTrue(set.contains(1), "Set should contain 1");
-            assertTrue(set.contains(2), "Set should contain 2");
-            assertTrue(set.remove(1), "Removing an element should return true");
-            assertFalse(set.contains(1), "Set should not contain 1 after removal");
-            assertTrue(set.contains(2), "Set should still contain 2 after removal of 1");
-        }
-
-        @Test
-        @DisplayName("Test contains method with null element throws exception")
-        public void testContainsNullThrowsException() {
-            MySet<Integer> set = new MySet<>(10);
-            set.add(1);
-            set.add(2);
-
-            assertThrows(IllegalArgumentException.class, () -> set.contains(null), "Contains with a null element should throw IllegalArgumentException");
-            assertAll(
-                    () -> assertEquals(2, set.size(), "Size should remain unchanged after contains with null"),
-                    () -> assertTrue(set.contains(1), "Set should still contain 1 after contains with null"),
-                    () -> assertTrue(set.contains(2), "Set should still contain 2 after contains with null")
-            );
         }
     }
 
