@@ -110,7 +110,7 @@ class MySetTest {
         set.add(1);
         set.add(2);
 
-        assertThrows(NullPointerException.class, () -> set.contains(null));
+        assertThrows(IllegalArgumentException.class, () -> set.contains(null), "Contains with a null element should throw IllegalArgumentException");
     }
 
     @Test
@@ -158,7 +158,7 @@ class MySetTest {
         set.add(1);
         set.add(2);
 
-        assertThrows(NullPointerException.class, () -> set.map(null));
+        assertThrows(IllegalArgumentException.class, () -> set.map(null), "Mapping with a null function should throw IllegalArgumentException");
     }
 
     
