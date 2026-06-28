@@ -2,8 +2,6 @@ package edu.rit.swen352.tdd.hard;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.api.Nested;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * Test suite for the {@link MySet} component.
  */
 class MySetTest {
-
+    @Test
+    void anchorTest() {}
     @Nested
     @DisplayName("Constructor Tests")
     static class ConstructorTests {
