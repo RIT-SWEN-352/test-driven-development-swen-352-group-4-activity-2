@@ -84,4 +84,9 @@ public class Measurement {
     return new Measurement(value / other.value, units.divide(other.units));
   }
 
+  @Override
+  public String toString() {
+    return value + units.getSymbol();
+  }
+
 }
