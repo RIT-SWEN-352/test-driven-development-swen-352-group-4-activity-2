@@ -42,4 +42,8 @@ public class Measurement {
     return units;
   }
 
+  public Measurement convertTo(Unit target) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
 }
