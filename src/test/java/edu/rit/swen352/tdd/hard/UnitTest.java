@@ -39,4 +39,19 @@ class UnitTest {
     );
   }
 
+  @Test
+  @DisplayName("isCompatible : 3 : same dimensions are compatible regardless of scale")
+  void isCompatible_3() {
+    final Unit meter = new Unit(1, 0, 0, 1.0, "m");
+    final Unit foot = new Unit(1, 0, 0, 0.3048, "ft");
+    final Unit second = new Unit(0, 1, 0, 1.0, "s");
+    final Unit mps = new Unit(1, -1, 0, 1.0, "m/s");
+    assertAll("dimensional compatibility"
+      , () -> assertTrue(meter.isCompatible(foot), "meter and foot are both length")
+      , () -> assertTrue(meter.isCompatible(meter), "reflexive")
+      , () -> assertFalse(meter.isCompatible(second), "length not compatible with time")
+      , () -> assertFalse(meter.isCompatible(mps), "length not compatible with velocity")
+    );
+  }
+
 }

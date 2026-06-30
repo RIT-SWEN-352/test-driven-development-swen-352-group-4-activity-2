@@ -50,6 +50,10 @@ public class Unit {
     return symbol;
   }
 
+  public boolean isCompatible(Unit other) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
   @Override
   public boolean equals(Object other) {
     if (this == other) return true;
