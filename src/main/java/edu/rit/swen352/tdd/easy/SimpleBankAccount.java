@@ -49,20 +49,22 @@ public class SimpleBankAccount {
   }
 
   public void deposit(float amount) {
-    if (amount <= 0.0f) {
-      throw new IllegalArgumentException(NON_POSITIVE_AMOUNT_ERROR);
-    }
+    requirePositiveAmount(amount);
     balance += amount;
   }
 
   public void withdraw(float amount) {
-    if (amount <= 0.0f) {
-      throw new IllegalArgumentException(NON_POSITIVE_AMOUNT_ERROR);
-    }
+    requirePositiveAmount(amount);
     if (amount > balance) {
       throw new IllegalStateException(INSUFFICIENT_FUNDS_ERROR);
     }
     balance -= amount;
+  }
+
+  private static void requirePositiveAmount(float amount) {
+    if (amount <= 0.0f) {
+      throw new IllegalArgumentException(NON_POSITIVE_AMOUNT_ERROR);
+    }
   }
 
 }
