@@ -51,4 +51,8 @@ public class Measurement {
     return new Measurement(convertedValue, target);
   }
 
+  public Measurement addition(Measurement other) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
 }

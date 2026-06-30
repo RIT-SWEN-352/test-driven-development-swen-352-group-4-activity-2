@@ -66,4 +66,17 @@ class MeasurementTest {
     assertEquals(Measurement.INCOMPATIBLE_UNITS_ERROR, e.getMessage());
   }
 
+  @Test
+  @DisplayName("addition : 5 : same units sum values, result in left-hand units")
+  void addition_5() {
+    final Measurement a = new Measurement(3.0, Unit.METER);
+    final Measurement b = new Measurement(2.0, Unit.METER);
+    final Measurement sum = a.addition(b);
+    assertAll("3m + 2m = 5m"
+      , () -> assertEquals(5.0, sum.getValue(), 1e-9)
+      , () -> assertEquals(Unit.METER, sum.getUnits())
+      , () -> assertEquals(3.0, a.getValue(), 1e-9, "lhs is immutable")
+    );
+  }
+
 }
