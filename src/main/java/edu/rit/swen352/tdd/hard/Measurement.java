@@ -70,7 +70,7 @@ public class Measurement {
   }
 
   public Measurement division(double scalar) {
-    throw new UnsupportedOperationException("NYI");
+    return new Measurement(value / scalar, units);
   }
 
 }
