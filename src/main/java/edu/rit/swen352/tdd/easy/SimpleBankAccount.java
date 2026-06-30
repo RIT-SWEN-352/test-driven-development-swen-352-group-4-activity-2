@@ -23,12 +23,14 @@ package edu.rit.swen352.tdd.easy;
  */
 public class SimpleBankAccount {
 
+  private float balance;
+
   public SimpleBankAccount(float initialBalance) {
-    throw new UnsupportedOperationException("NYI");
+    this.balance = initialBalance;
   }
 
   public float getBalance() {
-    throw new UnsupportedOperationException("NYI");
+    return balance;
   }
 
 }
