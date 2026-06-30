@@ -79,4 +79,16 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("addition : 6 : compatible units convert RHS to LHS units")
+  void addition_6() {
+    final Measurement meters = new Measurement(1.0, Unit.METER);
+    final Measurement feet = new Measurement(1.0, Unit.FOOT);
+    final Measurement sum = meters.addition(feet);
+    assertAll("1m + 1ft = 1.3048m"
+      , () -> assertEquals(1.3048, sum.getValue(), 1e-6)
+      , () -> assertEquals(Unit.METER, sum.getUnits())
+    );
+  }
+
 }
