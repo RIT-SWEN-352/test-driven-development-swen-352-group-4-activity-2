@@ -43,7 +43,7 @@ public class SimpleBankAccount {
   }
 
   public boolean isAccountEmpty() {
-    throw new UnsupportedOperationException("NYI");
+    return balance == 0.0f;
   }
 
 }
