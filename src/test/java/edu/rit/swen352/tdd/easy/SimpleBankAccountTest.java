@@ -132,4 +132,15 @@ class SimpleBankAccountTest {
     );
   }
 
+  @Test
+  @DisplayName("withdraw : 5 : exact balance amount empties the account (boundary)")
+  void withdraw_5_boundary() {
+    final SimpleBankAccount CuT = new SimpleBankAccount(50.00f);
+    CuT.withdraw(50.00f);
+    assertAll("account is fully drained"
+      , () -> assertEquals(0.00f, CuT.getBalance(), 0.001f, "Balance is now zero")
+      , () -> assertTrue(CuT.isAccountEmpty(), "Account is empty after full withdrawal")
+    );
+  }
+
 }
