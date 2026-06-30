@@ -56,6 +56,10 @@ public class Unit {
         && massExp == other.massExp;
   }
 
+  public Unit multiply(Unit other) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
   @Override
   public boolean equals(Object other) {
     if (this == other) return true;

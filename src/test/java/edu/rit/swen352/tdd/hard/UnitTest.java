@@ -54,4 +54,19 @@ class UnitTest {
     );
   }
 
+  @Test
+  @DisplayName("multiply : 4 : combines dimensions, scales, and symbols")
+  void multiply_4() {
+    final Unit meter = new Unit(1, 0, 0, 1.0, "m");
+    final Unit second = new Unit(0, 1, 0, 1.0, "s");
+    final Unit product = meter.multiply(second);
+    assertAll("meter * second"
+      , () -> assertEquals(1, product.getLengthExp())
+      , () -> assertEquals(1, product.getTimeExp())
+      , () -> assertEquals(0, product.getMassExp())
+      , () -> assertEquals(1.0, product.getScaleToBase(), 1e-9)
+      , () -> assertEquals("m*s", product.getSymbol())
+    );
+  }
+
 }
