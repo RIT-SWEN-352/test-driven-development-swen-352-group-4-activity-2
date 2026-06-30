@@ -124,4 +124,18 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("multiplication : 10 : Measurement RHS combines values and units")
+  void multiplication_10() {
+    final Measurement force = new Measurement(2.0, Unit.METER);
+    final Measurement t = new Measurement(3.0, Unit.SECOND);
+    final Measurement product = force.multiplication(t);
+    assertAll("2m * 3s = 6 m*s"
+      , () -> assertEquals(6.0, product.getValue(), 1e-9)
+      , () -> assertEquals(1, product.getUnits().getLengthExp())
+      , () -> assertEquals(1, product.getUnits().getTimeExp())
+      , () -> assertEquals("m*s", product.getUnits().getSymbol())
+    );
+  }
+
 }

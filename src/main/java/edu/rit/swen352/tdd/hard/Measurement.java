@@ -65,4 +65,8 @@ public class Measurement {
     return new Measurement(value * scalar, units);
   }
 
+  public Measurement multiplication(Measurement other) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
 }
