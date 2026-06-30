@@ -51,7 +51,9 @@ public class Unit {
   }
 
   public boolean isCompatible(Unit other) {
-    throw new UnsupportedOperationException("NYI");
+    return lengthExp == other.lengthExp
+        && timeExp == other.timeExp
+        && massExp == other.massExp;
   }
 
   @Override
