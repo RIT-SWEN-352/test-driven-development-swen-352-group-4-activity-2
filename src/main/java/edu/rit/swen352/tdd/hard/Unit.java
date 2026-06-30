@@ -65,6 +65,10 @@ public class Unit {
         combineSymbols(symbol, other.symbol, "*"));
   }
 
+  public Unit divide(Unit other) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
   private static String combineSymbols(String left, String right, String op) {
     if (left.isEmpty()) return right;
     if (right.isEmpty()) return left;

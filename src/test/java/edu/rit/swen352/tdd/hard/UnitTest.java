@@ -69,4 +69,19 @@ class UnitTest {
     );
   }
 
+  @Test
+  @DisplayName("divide : 5 : subtracts dimensions, divides scales, builds quotient symbol")
+  void divide_5() {
+    final Unit meter = new Unit(1, 0, 0, 1.0, "m");
+    final Unit second = new Unit(0, 1, 0, 1.0, "s");
+    final Unit velocity = meter.divide(second);
+    assertAll("m / s = m/s (velocity)"
+      , () -> assertEquals(1, velocity.getLengthExp())
+      , () -> assertEquals(-1, velocity.getTimeExp())
+      , () -> assertEquals(0, velocity.getMassExp())
+      , () -> assertEquals(1.0, velocity.getScaleToBase(), 1e-9)
+      , () -> assertEquals("m/s", velocity.getSymbol())
+    );
+  }
+
 }
