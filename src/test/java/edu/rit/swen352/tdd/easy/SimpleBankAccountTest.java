@@ -45,4 +45,11 @@ class SimpleBankAccountTest {
     assertTrue(CuT.isAccountEmpty(), "Empty account reports as empty");
   }
 
+  @Test
+  @DisplayName("isAccountEmpty : 2 : false when balance is positive")
+  void isAccountEmpty_2() {
+    final SimpleBankAccount CuT = new SimpleBankAccount(0.01f);
+    assertFalse(CuT.isAccountEmpty(), "Account with funds is not empty");
+  }
+
 }
