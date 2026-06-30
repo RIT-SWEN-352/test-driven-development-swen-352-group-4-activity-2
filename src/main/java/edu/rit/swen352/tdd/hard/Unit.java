@@ -21,6 +21,15 @@ public class Unit {
   public static final Unit KILOGRAM = new Unit(0, 0, 1, 1.0, "kg");
   public static final Unit DIMENSIONLESS = new Unit(0, 0, 0, 1.0, "");
 
+  public static final Unit INCH = null;
+  public static final Unit FOOT = null;
+  public static final Unit MILE = null;
+  public static final Unit KILOMETER = null;
+  public static final Unit CENTIMETER = null;
+  public static final Unit MINUTE = null;
+  public static final Unit HOUR = null;
+  public static final Unit POUND = null;
+
   private final int lengthExp;
   private final int timeExp;
   private final int massExp;

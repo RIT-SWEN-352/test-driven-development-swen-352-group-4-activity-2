@@ -100,4 +100,21 @@ class UnitTest {
     );
   }
 
+  @Test
+  @DisplayName("constants : 7 : derived imperial and metric units carry correct factors")
+  void constants_7() {
+    assertAll("derived units"
+      , () -> assertEquals(0.0254, Unit.INCH.getScaleToBase(), 1e-9, "1 inch = 0.0254 m")
+      , () -> assertEquals(0.3048, Unit.FOOT.getScaleToBase(), 1e-9, "1 ft = 0.3048 m")
+      , () -> assertEquals(1609.344, Unit.MILE.getScaleToBase(), 1e-6, "1 mile = 1609.344 m")
+      , () -> assertEquals(1000.0, Unit.KILOMETER.getScaleToBase(), 1e-9, "1 km = 1000 m")
+      , () -> assertEquals(0.01, Unit.CENTIMETER.getScaleToBase(), 1e-9, "1 cm = 0.01 m")
+      , () -> assertEquals(60.0, Unit.MINUTE.getScaleToBase(), 1e-9, "1 minute = 60 s")
+      , () -> assertEquals(3600.0, Unit.HOUR.getScaleToBase(), 1e-9, "1 hr = 3600 s")
+      , () -> assertEquals(0.45359237, Unit.POUND.getScaleToBase(), 1e-9, "1 lb = 0.45359237 kg")
+      , () -> assertTrue(Unit.MILE.isCompatible(Unit.METER), "miles and meters both length")
+      , () -> assertTrue(Unit.HOUR.isCompatible(Unit.SECOND), "hours and seconds both time")
+    );
+  }
+
 }
