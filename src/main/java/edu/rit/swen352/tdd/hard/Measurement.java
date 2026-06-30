@@ -52,7 +52,7 @@ public class Measurement {
   }
 
   public Measurement addition(Measurement other) {
-    throw new UnsupportedOperationException("NYI");
+    return new Measurement(value + other.value, units);
   }
 
 }
