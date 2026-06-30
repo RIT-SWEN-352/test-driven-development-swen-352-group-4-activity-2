@@ -20,4 +20,14 @@ class SimpleBankAccountTest {
     );
   }
 
+  @Test
+  @DisplayName("ctor : 2 : no-arg ctor defaults balance to zero")
+  void ctor_2() {
+    final SimpleBankAccount CuT = new SimpleBankAccount();
+    assertAll("no-arg ctor"
+      , () -> assertNotNull(CuT)
+      , () -> assertEquals(0.00f, CuT.getBalance(), 0.001f, "Default balance is zero")
+    );
+  }
+
 }

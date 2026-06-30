@@ -29,6 +29,10 @@ public class SimpleBankAccount {
     this.balance = initialBalance;
   }
 
+  public SimpleBankAccount() {
+    throw new UnsupportedOperationException("NYI");
+  }
+
   public float getBalance() {
     return balance;
   }
