@@ -113,4 +113,15 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("multiplication : 9 : scalar scales value, preserves units")
+  void multiplication_9() {
+    final Measurement five = new Measurement(5.0, Unit.METER);
+    final Measurement tripled = five.multiplication(3.0);
+    assertAll("5m * 3 = 15m"
+      , () -> assertEquals(15.0, tripled.getValue(), 1e-9)
+      , () -> assertEquals(Unit.METER, tripled.getUnits())
+    );
+  }
+
 }

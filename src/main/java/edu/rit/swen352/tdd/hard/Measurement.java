@@ -61,4 +61,8 @@ public class Measurement {
     return new Measurement(value - rhs.value, units);
   }
 
+  public Measurement multiplication(double scalar) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
 }
