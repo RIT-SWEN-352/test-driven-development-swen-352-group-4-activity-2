@@ -52,7 +52,8 @@ public class Measurement {
   }
 
   public Measurement addition(Measurement other) {
-    return new Measurement(value + other.value, units);
+    final Measurement rhs = other.convertTo(units);
+    return new Measurement(value + rhs.value, units);
   }
 
 }
