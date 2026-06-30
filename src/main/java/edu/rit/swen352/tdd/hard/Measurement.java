@@ -78,7 +78,10 @@ public class Measurement {
   }
 
   public Measurement division(Measurement other) {
-    throw new UnsupportedOperationException("NYI");
+    if (other.value == 0.0) {
+      throw new ArithmeticException(DIVIDE_BY_ZERO_ERROR);
+    }
+    return new Measurement(value / other.value, units.divide(other.units));
   }
 
 }
