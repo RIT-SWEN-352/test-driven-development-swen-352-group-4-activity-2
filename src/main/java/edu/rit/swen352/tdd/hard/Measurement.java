@@ -56,4 +56,8 @@ public class Measurement {
     return new Measurement(value + rhs.value, units);
   }
 
+  public Measurement substraction(Measurement other) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
 }

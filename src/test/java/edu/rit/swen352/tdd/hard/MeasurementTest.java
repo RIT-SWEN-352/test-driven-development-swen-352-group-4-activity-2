@@ -101,4 +101,16 @@ class MeasurementTest {
     assertEquals(Measurement.INCOMPATIBLE_UNITS_ERROR, e.getMessage());
   }
 
+  @Test
+  @DisplayName("substraction : 8 : subtract compatible measurements in LHS units")
+  void substraction_8() {
+    final Measurement oneMile = new Measurement(1.0, Unit.MILE);
+    final Measurement oneKm = new Measurement(1.0, Unit.KILOMETER);
+    final Measurement diff = oneMile.substraction(oneKm);
+    assertAll("1mi - 1km ~ 0.378mi"
+      , () -> assertEquals(0.378, diff.getValue(), 1e-3)
+      , () -> assertEquals(Unit.MILE, diff.getUnits())
+    );
+  }
+
 }
