@@ -43,7 +43,8 @@ public class Measurement {
   }
 
   public Measurement convertTo(Unit target) {
-    throw new UnsupportedOperationException("NYI");
+    final double convertedValue = value * units.getScaleToBase() / target.getScaleToBase();
+    return new Measurement(convertedValue, target);
   }
 
 }
