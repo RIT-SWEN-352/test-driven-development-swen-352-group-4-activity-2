@@ -91,4 +91,14 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("addition : 7 : reject incompatible units")
+  void addition_7_fail() {
+    final Measurement meters = new Measurement(1.0, Unit.METER);
+    final Measurement seconds = new Measurement(1.0, Unit.SECOND);
+    final Exception e = assertThrows(IllegalArgumentException.class,
+        () -> meters.addition(seconds));
+    assertEquals(Measurement.INCOMPATIBLE_UNITS_ERROR, e.getMessage());
+  }
+
 }
