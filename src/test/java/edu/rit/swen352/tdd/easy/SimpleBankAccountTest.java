@@ -143,4 +143,11 @@ class SimpleBankAccountTest {
     );
   }
 
+  @Test
+  @DisplayName("toString : 1 : format zero balance")
+  void toString_1() {
+    final SimpleBankAccount CuT = new SimpleBankAccount();
+    assertEquals("$0.00", CuT.toString());
+  }
+
 }
