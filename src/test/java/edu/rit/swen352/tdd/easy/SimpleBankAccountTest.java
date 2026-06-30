@@ -10,4 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class SimpleBankAccountTest {
 
+  @Test
+  @DisplayName("ctor : 1 : construct with positive initial balance")
+  void ctor_1() {
+    final SimpleBankAccount CuT = new SimpleBankAccount(100.00f);
+    assertAll("ctor with positive balance"
+      , () -> assertNotNull(CuT)
+      , () -> assertEquals(100.00f, CuT.getBalance(), 0.001f, "Balance is the supplied value")
+    );
+  }
+
 }

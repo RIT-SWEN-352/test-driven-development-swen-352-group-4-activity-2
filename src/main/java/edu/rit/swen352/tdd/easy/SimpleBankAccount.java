@@ -23,4 +23,12 @@ package edu.rit.swen352.tdd.easy;
  */
 public class SimpleBankAccount {
 
+  public SimpleBankAccount(float initialBalance) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
+  public float getBalance() {
+    throw new UnsupportedOperationException("NYI");
+  }
+
 }
