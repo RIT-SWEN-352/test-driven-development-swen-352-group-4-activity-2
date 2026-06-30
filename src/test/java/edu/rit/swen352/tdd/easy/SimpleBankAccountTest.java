@@ -30,4 +30,12 @@ class SimpleBankAccountTest {
     );
   }
 
+  @Test
+  @DisplayName("ctor : 3 : reject negative initial balance")
+  void ctor_3_fail() {
+    final Exception e = assertThrows(IllegalArgumentException.class,
+        () -> new SimpleBankAccount(-0.01f));
+    assertEquals(SimpleBankAccount.NEGATIVE_BALANCE_ERROR, e.getMessage());
+  }
+
 }
