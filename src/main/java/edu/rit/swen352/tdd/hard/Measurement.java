@@ -26,6 +26,7 @@ public class Measurement {
 
   static final String NULL_UNITS_ERROR = "units must not be null";
   static final String INCOMPATIBLE_UNITS_ERROR = "units are not compatible";
+  static final String DIVIDE_BY_ZERO_ERROR = "cannot divide by zero";
 
   public Measurement(double value, Unit units) {
     if (units == null) {

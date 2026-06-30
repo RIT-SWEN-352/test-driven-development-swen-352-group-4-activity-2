@@ -149,4 +149,13 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("division : 12 : reject divide by zero scalar (requirements gap)")
+  void division_12_fail() {
+    final Measurement ten = new Measurement(10.0, Unit.METER);
+    final Exception e = assertThrows(ArithmeticException.class,
+        () -> ten.division(0.0));
+    assertEquals(Measurement.DIVIDE_BY_ZERO_ERROR, e.getMessage());
+  }
+
 }
