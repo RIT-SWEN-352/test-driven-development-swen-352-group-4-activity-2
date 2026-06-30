@@ -186,4 +186,14 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("toString : 15 : value followed by unit symbol")
+  void toString_15() {
+    assertAll("simple units"
+      , () -> assertEquals("5.0m", new Measurement(5.0, Unit.METER).toString())
+      , () -> assertEquals("3.14kg", new Measurement(3.14, Unit.KILOGRAM).toString())
+      , () -> assertEquals("60.0s", new Measurement(60.0, Unit.SECOND).toString())
+    );
+  }
+
 }
