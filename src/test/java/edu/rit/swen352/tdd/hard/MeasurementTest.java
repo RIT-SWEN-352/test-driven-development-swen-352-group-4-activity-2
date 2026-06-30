@@ -196,4 +196,17 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("toString : 16 : compound unit example 9.8 m/s/s -> '9.8m/s/s'")
+  void toString_16() {
+    final Measurement m = new Measurement(100.0, Unit.METER);
+    final Measurement s = new Measurement(1.0, Unit.SECOND);
+    final Measurement velocity = m.division(s);
+    final Measurement acceleration = velocity.division(s);
+    assertAll("compound symbol carries through arithmetic"
+      , () -> assertEquals("100.0m/s", velocity.toString())
+      , () -> assertEquals("100.0m/s/s", acceleration.toString())
+    );
+  }
+
 }
