@@ -44,6 +44,9 @@ public class Measurement {
   }
 
   public Measurement convertTo(Unit target) {
+    if (!units.isCompatible(target)) {
+      throw new IllegalArgumentException(INCOMPATIBLE_UNITS_ERROR);
+    }
     final double convertedValue = value * units.getScaleToBase() / target.getScaleToBase();
     return new Measurement(convertedValue, target);
   }
