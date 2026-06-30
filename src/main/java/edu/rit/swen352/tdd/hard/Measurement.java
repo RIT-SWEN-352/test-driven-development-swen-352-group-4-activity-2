@@ -69,4 +69,8 @@ public class Measurement {
     return new Measurement(value * other.value, units.multiply(other.units));
   }
 
+  public Measurement division(double scalar) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
 }

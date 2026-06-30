@@ -138,4 +138,15 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("division : 11 : scalar divides value, preserves units")
+  void division_11() {
+    final Measurement ten = new Measurement(10.0, Unit.METER);
+    final Measurement half = ten.division(4.0);
+    assertAll("10m / 4 = 2.5m"
+      , () -> assertEquals(2.5, half.getValue(), 1e-9)
+      , () -> assertEquals(Unit.METER, half.getUnits())
+    );
+  }
+
 }
