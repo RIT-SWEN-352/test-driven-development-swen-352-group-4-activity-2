@@ -120,4 +120,16 @@ class SimpleBankAccountTest {
     );
   }
 
+  @Test
+  @DisplayName("withdraw : 4 : reject zero amount (requirements gap)")
+  void withdraw_4_fail() {
+    final SimpleBankAccount CuT = new SimpleBankAccount(50.00f);
+    final Exception e = assertThrows(IllegalArgumentException.class,
+        () -> CuT.withdraw(0.00f));
+    assertAll("rejection leaves account untouched"
+      , () -> assertEquals(SimpleBankAccount.NON_POSITIVE_AMOUNT_ERROR, e.getMessage())
+      , () -> assertEquals(50.00f, CuT.getBalance(), 0.001f, "Balance unchanged")
+    );
+  }
+
 }
