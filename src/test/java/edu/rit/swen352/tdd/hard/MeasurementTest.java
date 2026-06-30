@@ -57,4 +57,13 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("convertTo : 4 : reject conversion across incompatible units")
+  void convertTo_4_fail() {
+    final Measurement fiveMeters = new Measurement(5.0, Unit.METER);
+    final Exception e = assertThrows(IllegalArgumentException.class,
+        () -> fiveMeters.convertTo(Unit.SECOND));
+    assertEquals(Measurement.INCOMPATIBLE_UNITS_ERROR, e.getMessage());
+  }
+
 }

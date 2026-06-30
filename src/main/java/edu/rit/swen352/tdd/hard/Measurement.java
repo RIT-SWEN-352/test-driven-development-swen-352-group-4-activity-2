@@ -25,6 +25,7 @@ public class Measurement {
   private final Unit units;
 
   static final String NULL_UNITS_ERROR = "units must not be null";
+  static final String INCOMPATIBLE_UNITS_ERROR = "units are not compatible";
 
   public Measurement(double value, Unit units) {
     if (units == null) {
