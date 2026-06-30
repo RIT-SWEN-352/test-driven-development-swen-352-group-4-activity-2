@@ -52,4 +52,12 @@ class SimpleBankAccountTest {
     assertFalse(CuT.isAccountEmpty(), "Account with funds is not empty");
   }
 
+  @Test
+  @DisplayName("deposit : 1 : positive amount increases balance")
+  void deposit_1() {
+    final SimpleBankAccount CuT = new SimpleBankAccount(10.00f);
+    CuT.deposit(15.50f);
+    assertEquals(25.50f, CuT.getBalance(), 0.001f, "Balance reflects deposited amount");
+  }
+
 }

@@ -46,4 +46,8 @@ public class SimpleBankAccount {
     return balance == 0.0f;
   }
 
+  public void deposit(float amount) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
 }
