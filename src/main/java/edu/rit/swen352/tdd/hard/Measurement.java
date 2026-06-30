@@ -66,7 +66,7 @@ public class Measurement {
   }
 
   public Measurement multiplication(Measurement other) {
-    throw new UnsupportedOperationException("NYI");
+    return new Measurement(value * other.value, units.multiply(other.units));
   }
 
 }
