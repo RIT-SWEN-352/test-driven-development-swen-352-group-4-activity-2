@@ -2,6 +2,8 @@ package edu.rit.swen352.tdd.easy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -58,6 +60,19 @@ class SimpleBankAccountTest {
     final SimpleBankAccount CuT = new SimpleBankAccount(10.00f);
     CuT.deposit(15.50f);
     assertEquals(25.50f, CuT.getBalance(), 0.001f, "Balance reflects deposited amount");
+  }
+
+  @ParameterizedTest(name = "amount={0}")
+  @ValueSource(floats = {-0.01f, -1.00f, -100.00f})
+  @DisplayName("deposit : 2 : reject negative amount")
+  void deposit_2_fail(float amount) {
+    final SimpleBankAccount CuT = new SimpleBankAccount(10.00f);
+    final Exception e = assertThrows(IllegalArgumentException.class,
+        () -> CuT.deposit(amount));
+    assertAll("rejection leaves account untouched"
+      , () -> assertEquals(SimpleBankAccount.NON_POSITIVE_AMOUNT_ERROR, e.getMessage())
+      , () -> assertEquals(10.00f, CuT.getBalance(), 0.001f, "Balance unchanged")
+    );
   }
 
 }

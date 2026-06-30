@@ -24,6 +24,7 @@ package edu.rit.swen352.tdd.easy;
 public class SimpleBankAccount {
 
   static final String NEGATIVE_BALANCE_ERROR = "balance must not be negative";
+  static final String NON_POSITIVE_AMOUNT_ERROR = "amount must be positive";
 
   private float balance;
 
