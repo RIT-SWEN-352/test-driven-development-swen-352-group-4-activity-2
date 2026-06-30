@@ -24,4 +24,88 @@ package edu.rit.swen352.tdd.hard;
  * @param <T> the type of elements in the set.
  */
 public class MySet<T> {
+    private Object[] elements;
+    private int size;
+
+    public MySet(int initialCapacity) {
+        if (initialCapacity <= 0) {
+            throw new IllegalArgumentException("Initial capacity must be greater than 0");
+        }
+
+        this.elements = new Object[initialCapacity];
+        this.size = 0;
+    }
+
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
+    public int size() {
+        return this.size;
+    }
+    
+    public boolean add(T element) {
+        if (element == null) {
+            throw new IllegalArgumentException("Element cannot be null");
+        }
+
+        if (contains(element)) {
+            return false;
+        }
+
+        if (size == elements.length) {
+            // Resize the array if necessary
+            Object[] newElements = new Object[elements.length * 2];
+            System.arraycopy(elements, 0, newElements, 0, size);
+            elements = newElements;
+        }
+
+        elements[size++] = element;
+        return true;
+    }
+
+    public boolean contains(T element) {
+        if (element == null) {
+            throw new IllegalArgumentException("Element cannot be null");
+        }
+
+        for (int i = 0; i < size; i++) {
+            if (elements[i].equals(element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean remove(T element) {
+        if (element == null) {
+            throw new IllegalArgumentException("Element cannot be null");
+        }
+
+        for (int i = 0; i < size; i++) {
+            if (elements[i].equals(element)) {
+                // Shift elements to the left to fill the gap
+                System.arraycopy(elements, i + 1, elements, i, size - i - 1);
+                elements[--size] = null; // Clear the last element
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public <F> MySet<F> map(java.util.function.Function<T, F> function) {
+        if (function == null) {
+            throw new IllegalArgumentException("Function cannot be null");
+        }
+
+        MySet<F> newSet = new MySet<>(elements.length);
+        for (int i = 0; i < size; i++) {
+            F newElement = function.apply((T) elements[i]);
+            if (newElement == null) {
+                throw new IllegalArgumentException("Mapped element cannot be null");
+            }
+            newSet.add(newElement);
+        }
+        return newSet;
+    }
 }
