@@ -95,4 +95,16 @@ class SimpleBankAccountTest {
     assertEquals(29.50f, CuT.getBalance(), 0.001f, "Balance reflects withdrawn amount");
   }
 
+  @Test
+  @DisplayName("withdraw : 2 : reject amount exceeding balance")
+  void withdraw_2_fail() {
+    final SimpleBankAccount CuT = new SimpleBankAccount(50.00f);
+    final Exception e = assertThrows(IllegalStateException.class,
+        () -> CuT.withdraw(50.01f));
+    assertAll("rejection leaves account untouched"
+      , () -> assertEquals(SimpleBankAccount.INSUFFICIENT_FUNDS_ERROR, e.getMessage())
+      , () -> assertEquals(50.00f, CuT.getBalance(), 0.001f, "Balance unchanged")
+    );
+  }
+
 }
