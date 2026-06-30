@@ -158,4 +158,18 @@ class MeasurementTest {
     assertEquals(Measurement.DIVIDE_BY_ZERO_ERROR, e.getMessage());
   }
 
+  @Test
+  @DisplayName("division : 13 : same-unit Measurement RHS yields dimensionless scalar")
+  void division_13() {
+    final Measurement six = new Measurement(6.0, Unit.METER);
+    final Measurement two = new Measurement(2.0, Unit.METER);
+    final Measurement ratio = six.division(two);
+    assertAll("6m / 2m = 3 (dimensionless)"
+      , () -> assertEquals(3.0, ratio.getValue(), 1e-9)
+      , () -> assertEquals(0, ratio.getUnits().getLengthExp())
+      , () -> assertEquals(0, ratio.getUnits().getTimeExp())
+      , () -> assertEquals(0, ratio.getUnits().getMassExp())
+    );
+  }
+
 }

@@ -77,4 +77,8 @@ public class Measurement {
     return new Measurement(value / scalar, units);
   }
 
+  public Measurement division(Measurement other) {
+    throw new UnsupportedOperationException("NYI");
+  }
+
 }
