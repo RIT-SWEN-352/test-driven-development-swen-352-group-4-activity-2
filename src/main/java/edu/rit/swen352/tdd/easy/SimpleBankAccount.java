@@ -56,6 +56,9 @@ public class SimpleBankAccount {
   }
 
   public void withdraw(float amount) {
+    if (amount < 0.0f) {
+      throw new IllegalArgumentException(NON_POSITIVE_AMOUNT_ERROR);
+    }
     if (amount > balance) {
       throw new IllegalStateException(INSUFFICIENT_FUNDS_ERROR);
     }
