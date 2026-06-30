@@ -57,7 +57,18 @@ public class Unit {
   }
 
   public Unit multiply(Unit other) {
-    throw new UnsupportedOperationException("NYI");
+    return new Unit(
+        lengthExp + other.lengthExp,
+        timeExp + other.timeExp,
+        massExp + other.massExp,
+        scaleToBase * other.scaleToBase,
+        combineSymbols(symbol, other.symbol, "*"));
+  }
+
+  private static String combineSymbols(String left, String right, String op) {
+    if (left.isEmpty()) return right;
+    if (right.isEmpty()) return left;
+    return left + op + right;
   }
 
   @Override
