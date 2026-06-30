@@ -30,7 +30,7 @@ public class SimpleBankAccount {
   }
 
   public SimpleBankAccount() {
-    throw new UnsupportedOperationException("NYI");
+    this(0.0f);
   }
 
   public float getBalance() {
