@@ -107,4 +107,17 @@ class SimpleBankAccountTest {
     );
   }
 
+  @ParameterizedTest(name = "amount={0}")
+  @ValueSource(floats = {-0.01f, -1.00f, -100.00f})
+  @DisplayName("withdraw : 3 : reject negative amount")
+  void withdraw_3_fail(float amount) {
+    final SimpleBankAccount CuT = new SimpleBankAccount(50.00f);
+    final Exception e = assertThrows(IllegalArgumentException.class,
+        () -> CuT.withdraw(amount));
+    assertAll("rejection leaves account untouched"
+      , () -> assertEquals(SimpleBankAccount.NON_POSITIVE_AMOUNT_ERROR, e.getMessage())
+      , () -> assertEquals(50.00f, CuT.getBalance(), 0.001f, "Balance unchanged")
+    );
+  }
+
 }
