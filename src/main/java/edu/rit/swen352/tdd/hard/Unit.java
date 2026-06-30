@@ -50,4 +50,23 @@ public class Unit {
     return symbol;
   }
 
+  @Override
+  public boolean equals(Object other) {
+    if (this == other) return true;
+    if (!(other instanceof Unit u)) return false;
+    return lengthExp == u.lengthExp
+        && timeExp == u.timeExp
+        && massExp == u.massExp
+        && Double.compare(scaleToBase, u.scaleToBase) == 0;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = Integer.hashCode(lengthExp);
+    result = 31 * result + Integer.hashCode(timeExp);
+    result = 31 * result + Integer.hashCode(massExp);
+    result = 31 * result + Double.hashCode(scaleToBase);
+    return result;
+  }
+
 }
