@@ -24,4 +24,19 @@ class UnitTest {
     );
   }
 
+  @Test
+  @DisplayName("equals : 2 : same dims and scale are equal; different scale or dim is not")
+  void equals_2() {
+    final Unit footA = new Unit(1, 0, 0, 0.3048, "ft");
+    final Unit footB = new Unit(1, 0, 0, 0.3048, "ft");
+    final Unit meter = new Unit(1, 0, 0, 1.0, "m");
+    final Unit second = new Unit(0, 1, 0, 1.0, "s");
+    assertAll("equality contract"
+      , () -> assertEquals(footA, footB, "structurally identical units are equal")
+      , () -> assertEquals(footA.hashCode(), footB.hashCode(), "consistent hashCode")
+      , () -> assertNotEquals(footA, meter, "different scale -> not equal")
+      , () -> assertNotEquals(meter, second, "different dimensions -> not equal")
+    );
+  }
+
 }
