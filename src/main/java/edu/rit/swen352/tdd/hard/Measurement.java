@@ -24,7 +24,12 @@ public class Measurement {
   private final double value;
   private final Unit units;
 
+  static final String NULL_UNITS_ERROR = "units must not be null";
+
   public Measurement(double value, Unit units) {
+    if (units == null) {
+      throw new IllegalArgumentException(NULL_UNITS_ERROR);
+    }
     this.value = value;
     this.units = units;
   }
