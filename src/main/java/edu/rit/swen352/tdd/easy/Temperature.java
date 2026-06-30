@@ -28,4 +28,77 @@ public class Temperature {
   public enum TemperatureUnit {
     CELSIUS, FAHRENHEIT, KELVIN
   }
+
+  double value;
+  TemperatureUnit unit;
+
+  public Temperature(double value, TemperatureUnit unit) {
+    this.value = value;
+    this.unit = unit;
+  }
+
+  public Temperature(double value) {
+    this(value, TemperatureUnit.CELSIUS);
+  }
+
+  public double getValue() {
+    return value;
+  }
+
+  public TemperatureUnit getUnit() {
+    return unit;
+  }
+
+  public Temperature convertTo(TemperatureUnit newUnit) {
+    if (unit == newUnit) {
+      return new Temperature(value, unit);
+    }
+
+    double newValue = 0;
+
+    switch (unit) {
+      case CELSIUS:
+        if (newUnit == TemperatureUnit.FAHRENHEIT) {
+          newValue = value * 9 / 5 + 32;
+        } else if (newUnit == TemperatureUnit.KELVIN) {
+          newValue = value + 273.15;
+        }
+        break;
+      case FAHRENHEIT:
+        if (newUnit == TemperatureUnit.CELSIUS) {
+          newValue = (value - 32) * 5 / 9;
+        } else if (newUnit == TemperatureUnit.KELVIN) {
+          newValue = (value - 32) * 5 / 9 + 273.15;
+        }
+        break;
+      case KELVIN:
+        if (newUnit == TemperatureUnit.CELSIUS) {
+          newValue = value - 273.15;
+        } else if (newUnit == TemperatureUnit.FAHRENHEIT) {
+          newValue = (value - 273.15) * 9 / 5 + 32;
+        }
+        break;
+    }
+    return new Temperature(newValue, newUnit);
+  }
+
+
+  public String toString() {
+    String stringRep = String.format("%.2f", value);
+    if (stringRep.endsWith("0"))
+      stringRep = stringRep.substring(0, stringRep.length() - 1);
+    switch (unit) {
+      case CELSIUS:
+        stringRep += "°C";
+        break;
+      case FAHRENHEIT:
+        stringRep += "°F";
+        break;
+      case KELVIN:
+        stringRep += "K";
+        break;
+    }
+    return stringRep;
+  }
 }
+

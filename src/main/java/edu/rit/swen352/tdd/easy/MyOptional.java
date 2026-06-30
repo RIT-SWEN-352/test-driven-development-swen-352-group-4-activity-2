@@ -36,4 +36,42 @@ package edu.rit.swen352.tdd.easy;
  * @param <T> the type of value.
  */
 public class MyOptional<T> {
+    private final T value;
+    
+    private MyOptional(T value) {
+        this.value = value;
+    }
+
+    public static <T> MyOptional<T> empty() {
+        return new MyOptional<>(null);
+    }
+
+    public static <T> MyOptional<T> of(T value) {
+        if (value == null) {
+            throw new IllegalArgumentException("Value cannot be null");
+        }
+        return new MyOptional<>(value);
+    }
+
+    public static <T> MyOptional<T> ofNullable(T value) {
+        return new MyOptional<>(value);
+    }
+    
+    public boolean isPresent() {
+        return value != null;
+    }
+
+    public T get() {
+        if (!isPresent()) {
+            throw new java.util.NoSuchElementException("No value present");
+        }
+        return value;
+    }
+
+    public void ifPresent(java.util.function.Consumer<? super T> consumer) {
+        if (isPresent()) {
+            consumer.accept(value);
+        }
+    }
+    
 }
