@@ -38,4 +38,11 @@ class SimpleBankAccountTest {
     assertEquals(SimpleBankAccount.NEGATIVE_BALANCE_ERROR, e.getMessage());
   }
 
+  @Test
+  @DisplayName("isAccountEmpty : 1 : true when balance is zero")
+  void isAccountEmpty_1() {
+    final SimpleBankAccount CuT = new SimpleBankAccount();
+    assertTrue(CuT.isAccountEmpty(), "Empty account reports as empty");
+  }
+
 }
