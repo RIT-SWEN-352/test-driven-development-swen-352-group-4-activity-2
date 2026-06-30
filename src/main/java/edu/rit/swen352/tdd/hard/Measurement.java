@@ -21,16 +21,20 @@ package edu.rit.swen352.tdd.hard;
  */
 public class Measurement {
 
+  private final double value;
+  private final Unit units;
+
   public Measurement(double value, Unit units) {
-    throw new UnsupportedOperationException("NYI");
+    this.value = value;
+    this.units = units;
   }
 
   public double getValue() {
-    throw new UnsupportedOperationException("NYI");
+    return value;
   }
 
   public Unit getUnits() {
-    throw new UnsupportedOperationException("NYI");
+    return units;
   }
 
 }
