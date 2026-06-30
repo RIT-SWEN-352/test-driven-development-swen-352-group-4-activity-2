@@ -87,4 +87,12 @@ class SimpleBankAccountTest {
     );
   }
 
+  @Test
+  @DisplayName("withdraw : 1 : valid amount decreases balance")
+  void withdraw_1() {
+    final SimpleBankAccount CuT = new SimpleBankAccount(50.00f);
+    CuT.withdraw(20.50f);
+    assertEquals(29.50f, CuT.getBalance(), 0.001f, "Balance reflects withdrawn amount");
+  }
+
 }
