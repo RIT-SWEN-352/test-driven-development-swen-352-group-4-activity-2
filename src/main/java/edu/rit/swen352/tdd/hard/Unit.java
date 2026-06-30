@@ -66,7 +66,12 @@ public class Unit {
   }
 
   public Unit divide(Unit other) {
-    throw new UnsupportedOperationException("NYI");
+    return new Unit(
+        lengthExp - other.lengthExp,
+        timeExp - other.timeExp,
+        massExp - other.massExp,
+        scaleToBase / other.scaleToBase,
+        combineSymbols(symbol, other.symbol, "/"));
   }
 
   private static String combineSymbols(String left, String right, String op) {
