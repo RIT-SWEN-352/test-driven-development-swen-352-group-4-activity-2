@@ -172,4 +172,18 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("division : 14 : different-unit Measurement RHS yields compound unit")
+  void division_14() {
+    final Measurement distance = new Measurement(100.0, Unit.METER);
+    final Measurement time = new Measurement(4.0, Unit.SECOND);
+    final Measurement velocity = distance.division(time);
+    assertAll("100m / 4s = 25 m/s"
+      , () -> assertEquals(25.0, velocity.getValue(), 1e-9)
+      , () -> assertEquals(1, velocity.getUnits().getLengthExp())
+      , () -> assertEquals(-1, velocity.getUnits().getTimeExp())
+      , () -> assertEquals("m/s", velocity.getUnits().getSymbol())
+    );
+  }
+
 }
