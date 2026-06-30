@@ -75,4 +75,16 @@ class SimpleBankAccountTest {
     );
   }
 
+  @Test
+  @DisplayName("deposit : 3 : reject zero amount (requirements gap)")
+  void deposit_3_fail() {
+    final SimpleBankAccount CuT = new SimpleBankAccount(10.00f);
+    final Exception e = assertThrows(IllegalArgumentException.class,
+        () -> CuT.deposit(0.00f));
+    assertAll("rejection leaves account untouched"
+      , () -> assertEquals(SimpleBankAccount.NON_POSITIVE_AMOUNT_ERROR, e.getMessage())
+      , () -> assertEquals(10.00f, CuT.getBalance(), 0.001f, "Balance unchanged")
+    );
+  }
+
 }
