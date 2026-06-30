@@ -3,6 +3,7 @@ package edu.rit.swen352.tdd.easy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -148,6 +149,19 @@ class SimpleBankAccountTest {
   void toString_1() {
     final SimpleBankAccount CuT = new SimpleBankAccount();
     assertEquals("$0.00", CuT.toString());
+  }
+
+  @ParameterizedTest(name = "balance={0} -> \"{1}\"")
+  @CsvSource({
+      "20.50, $20.50",
+      "1.07, $1.07",
+      "1234.50, $1234.50",
+      "99.99, $99.99"
+  })
+  @DisplayName("toString : 2 : format positive balance with two decimal places")
+  void toString_2(float balance, String expected) {
+    final SimpleBankAccount CuT = new SimpleBankAccount(balance);
+    assertEquals(expected, CuT.toString());
   }
 
 }
