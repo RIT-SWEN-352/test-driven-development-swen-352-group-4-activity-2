@@ -21,14 +21,14 @@ public class Unit {
   public static final Unit KILOGRAM = new Unit(0, 0, 1, 1.0, "kg");
   public static final Unit DIMENSIONLESS = new Unit(0, 0, 0, 1.0, "");
 
-  public static final Unit INCH = null;
-  public static final Unit FOOT = null;
-  public static final Unit MILE = null;
-  public static final Unit KILOMETER = null;
-  public static final Unit CENTIMETER = null;
-  public static final Unit MINUTE = null;
-  public static final Unit HOUR = null;
-  public static final Unit POUND = null;
+  public static final Unit INCH = new Unit(1, 0, 0, 0.0254, "in");
+  public static final Unit FOOT = new Unit(1, 0, 0, 0.3048, "ft");
+  public static final Unit MILE = new Unit(1, 0, 0, 1609.344, "mi");
+  public static final Unit KILOMETER = new Unit(1, 0, 0, 1000.0, "km");
+  public static final Unit CENTIMETER = new Unit(1, 0, 0, 0.01, "cm");
+  public static final Unit MINUTE = new Unit(0, 1, 0, 60.0, "min");
+  public static final Unit HOUR = new Unit(0, 1, 0, 3600.0, "hr");
+  public static final Unit POUND = new Unit(0, 0, 1, 0.45359237, "lb");
 
   private final int lengthExp;
   private final int timeExp;
