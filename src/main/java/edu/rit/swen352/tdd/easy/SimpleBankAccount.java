@@ -23,4 +23,53 @@ package edu.rit.swen352.tdd.easy;
  */
 public class SimpleBankAccount {
 
+  static final String NEGATIVE_BALANCE_ERROR = "balance must not be negative";
+  static final String NON_POSITIVE_AMOUNT_ERROR = "amount must be positive";
+  static final String INSUFFICIENT_FUNDS_ERROR = "amount exceeds current balance";
+
+  private float balance;
+
+  public SimpleBankAccount(float initialBalance) {
+    if (initialBalance < 0.0f) {
+      throw new IllegalArgumentException(NEGATIVE_BALANCE_ERROR);
+    }
+    this.balance = initialBalance;
+  }
+
+  public SimpleBankAccount() {
+    this(0.0f);
+  }
+
+  public float getBalance() {
+    return balance;
+  }
+
+  public boolean isAccountEmpty() {
+    return balance == 0.0f;
+  }
+
+  public void deposit(float amount) {
+    requirePositiveAmount(amount);
+    balance += amount;
+  }
+
+  public void withdraw(float amount) {
+    requirePositiveAmount(amount);
+    if (amount > balance) {
+      throw new IllegalStateException(INSUFFICIENT_FUNDS_ERROR);
+    }
+    balance -= amount;
+  }
+
+  private static void requirePositiveAmount(float amount) {
+    if (amount <= 0.0f) {
+      throw new IllegalArgumentException(NON_POSITIVE_AMOUNT_ERROR);
+    }
+  }
+
+  @Override
+  public String toString() {
+    return String.format("$%.2f", balance);
+  }
+
 }
