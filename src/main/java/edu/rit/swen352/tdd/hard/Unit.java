@@ -16,28 +16,38 @@ package edu.rit.swen352.tdd.hard;
  */
 public class Unit {
 
+  private final int lengthExp;
+  private final int timeExp;
+  private final int massExp;
+  private final double scaleToBase;
+  private final String symbol;
+
   public Unit(int lengthExp, int timeExp, int massExp, double scaleToBase, String symbol) {
-    throw new UnsupportedOperationException("NYI");
+    this.lengthExp = lengthExp;
+    this.timeExp = timeExp;
+    this.massExp = massExp;
+    this.scaleToBase = scaleToBase;
+    this.symbol = symbol;
   }
 
   public int getLengthExp() {
-    throw new UnsupportedOperationException("NYI");
+    return lengthExp;
   }
 
   public int getTimeExp() {
-    throw new UnsupportedOperationException("NYI");
+    return timeExp;
   }
 
   public int getMassExp() {
-    throw new UnsupportedOperationException("NYI");
+    return massExp;
   }
 
   public double getScaleToBase() {
-    throw new UnsupportedOperationException("NYI");
+    return scaleToBase;
   }
 
   public String getSymbol() {
-    throw new UnsupportedOperationException("NYI");
+    return symbol;
   }
 
 }
