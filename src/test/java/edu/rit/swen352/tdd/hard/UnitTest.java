@@ -84,4 +84,20 @@ class UnitTest {
     );
   }
 
+  @Test
+  @DisplayName("constants : 6 : SI base units and DIMENSIONLESS are predefined")
+  void constants_6() {
+    assertAll("base SI units"
+      , () -> assertEquals(1.0, Unit.METER.getScaleToBase(), 1e-9)
+      , () -> assertEquals(1, Unit.METER.getLengthExp())
+      , () -> assertEquals("m", Unit.METER.getSymbol())
+      , () -> assertEquals(1, Unit.SECOND.getTimeExp())
+      , () -> assertEquals("s", Unit.SECOND.getSymbol())
+      , () -> assertEquals(1, Unit.KILOGRAM.getMassExp())
+      , () -> assertEquals("kg", Unit.KILOGRAM.getSymbol())
+      , () -> assertEquals(0, Unit.DIMENSIONLESS.getLengthExp())
+      , () -> assertEquals("", Unit.DIMENSIONLESS.getSymbol())
+    );
+  }
+
 }
