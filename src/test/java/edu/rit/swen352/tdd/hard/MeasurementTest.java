@@ -21,4 +21,11 @@ class MeasurementTest {
     );
   }
 
+  @Test
+  @DisplayName("ctor : 2 : reject null units (requirements gap)")
+  void ctor_2_fail() {
+    assertThrows(IllegalArgumentException.class,
+        () -> new Measurement(5.0, null));
+  }
+
 }
