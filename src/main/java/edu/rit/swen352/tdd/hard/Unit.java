@@ -16,10 +16,10 @@ package edu.rit.swen352.tdd.hard;
  */
 public class Unit {
 
-  public static final Unit METER = null;
-  public static final Unit SECOND = null;
-  public static final Unit KILOGRAM = null;
-  public static final Unit DIMENSIONLESS = null;
+  public static final Unit METER = new Unit(1, 0, 0, 1.0, "m");
+  public static final Unit SECOND = new Unit(0, 1, 0, 1.0, "s");
+  public static final Unit KILOGRAM = new Unit(0, 0, 1, 1.0, "kg");
+  public static final Unit DIMENSIONLESS = new Unit(0, 0, 0, 1.0, "");
 
   private final int lengthExp;
   private final int timeExp;
