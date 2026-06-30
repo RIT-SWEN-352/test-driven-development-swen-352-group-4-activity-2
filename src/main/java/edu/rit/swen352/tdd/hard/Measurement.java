@@ -71,6 +71,9 @@ public class Measurement {
   }
 
   public Measurement division(double scalar) {
+    if (scalar == 0.0) {
+      throw new ArithmeticException(DIVIDE_BY_ZERO_ERROR);
+    }
     return new Measurement(value / scalar, units);
   }
 
